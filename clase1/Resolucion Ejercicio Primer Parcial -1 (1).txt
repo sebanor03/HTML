@@ -1,0 +1,165 @@
+programa ejemplo;
+
+TIPOS ESTRUCTURADOS 
+
+	regGeneral = Registro 
+					codProducto:Integer;
+					precioVigente:Real;
+					stockInicialSucursal1:Integer;
+					stockActualSucursal1:Integer;
+					stockInicialSucursal2:Integer;
+					stockActualSucursal2:Integer;
+					stockInicialSucursal3:Integer;
+					stockActualSucursal3:Integer;
+					stockInicialSucursal4:Integer;
+					stockActualSucursal4:Integer;
+					stockInicialSucursal5:Integer;
+					stockActualSucursal5:Integer;
+				FinRegistro;
+
+	regSucursal = Registro 
+					codProducto:Integer;
+					precioVigente:Float;
+					stockInicial:Integer;
+					stockActual:Integer;
+				FinRegistro; 
+
+	vectorGeneral = Arreglo (2500) de tipo regGeneral;
+	
+	vectorStock = Arreglo(2500) de tipo regSucursal;
+	
+	vectorPrecios = Arreglo(2500) de tipo Real;
+
+	procedimiento cargaPrecios(ref vecp:vectoPrecios)
+		variables
+			i:Integer;
+		Hacer
+			RepetirPara i:=1,2500
+			Imprimir('Ingrese el precio del producto ',i);
+			Leer(vecp(i));
+			FinRepetirPara
+		FinHacer
+	FinProcedimiento
+
+	Procedimiento cargaDatos (ref vec:vectorStock, vecp:vectorPrecios)
+		Variables
+			i:integer;
+		Hacer
+			repetirPara i:=1,2500
+				vec(i).codProcucto:=i;
+				vec(i).precioVigente:= vecp(i);
+				Imprimir('Ingrese el stock inicial del producto ',i);
+				Leer(vec(i),stockInicial);
+				Imprimir('Ingrese el stock actual del producto ',i);
+				Leer(vec(i),stockActual);
+			FinRepetirPara
+		FinHacer
+	FinProcedimiento;
+
+	Procedimiento venta (ref vecto1,vector2,vector3,vector4,vector5:vectorStock)
+	Variables 
+		cod:Integer;
+		cant:Integer;
+		suc:Integer;
+		rta:char;
+
+	Hacer
+	rta:='s';
+	RepetirMientras(rta='s')
+		Imprimir('Ingrese la sucursal del producto a comprar');
+		leer(suc);
+		Imprimir('Ingrese el codigo del producto a comprar');
+		leer(cod);
+		Imprimir('Ingrese la cantidad a comprar');
+		leer(cant);
+
+		Caso (suc): 
+	
+			1:
+				Si (vecto1(cod).stockActual>=cant)
+						vecto1(cod).stockActual:=vecto1(cod).stockActual-cant; 
+						Imprimir('VENTA EXITOSA');
+				SINO
+					Imprimir('STOCK INSUFICIENTE');
+				FinSi
+			2:
+				Si (vecto2(cod).stockActual>=cant)
+						vecto2(cod).stockActual:=vecto2(cod).stockActual-cant; 
+						Imprimir('VENTA EXITOSA');
+				SINO
+					Imprimir('STOCK INSUFICIENTE');
+				FinSi
+			3:
+				Si (vecto3(cod).stockActual>=cant)
+						vecto3(cod).stockActual:=vecto3(cod).stockActual-cant; 
+						Imprimir('VENTA EXITOSA');
+				SINO
+					Imprimir('STOCK INSUFICIENTE');
+				FinSi
+			4:
+				Si (vecto4(cod).stockActual>=cant)
+						vecto4(cod).stockActual:=vecto4(cod).stockActual-cant; 
+						Imprimir('VENTA EXITOSA');
+				SINO
+					Imprimir('STOCK INSUFICIENTE');
+				FinSi
+			5:
+				Si (vecto5(cod).stockActual>=cant)
+						vecto5(cod).stockActual:=vecto5(cod).stockActual-cant;
+						Imprimir('VENTA EXITOSA'); 
+				SINO
+					Imprimir('STOCK INSUFICIENTE');
+				FinSi
+
+		FinCaso
+		
+		Imprimir('Desea realizar otra venta?');
+		Leer(rta);
+	
+	FinRepetirMientras;
+	
+	FinHacer;
+
+FinProcedimiento;
+
+	VARIABLES
+		sucursal1:vectorStock;
+		sucursal2:vectorStock;
+		sucursal3:vectorStock;
+		sucursal4:vectorStock;
+		sucursal5:vectorStock;
+		precios:vectorPrecios;
+		planillaFinal:vectorGeneral;
+		i:Integer;
+
+	HACER 
+
+	cargaPrecios(precios);
+	cargaDatos(sucursal1,precios);
+	cargaDatos(sucursal2,precios);
+	cargaDatos(sucursal3,precios);
+	cargaDatos(sucursal4,precios);
+	cargaDatos(sucursal5,precios);
+	ventas(sucursal1,sucursal2,sucursal3,sucursal4,sucursal5);
+
+
+	RepetirPara i:=1,2500 
+
+		planillaFinal(i).codProducto:=i;
+		planillaFinal(i).precioVigente:=precios(i);
+		planillaFinal(i).stockInicial1:=sucursal1(i).stockInicial1;
+		planillaFinal(i).stockActual1:=sucursal1(i).stockActual;
+		planillaFinal(i).stockInicial2:=sucursal2(i).stockInicial;
+		planillaFinal(i).stockActual2:=sucursal2(i).stockActual;
+		planillaFinal(i).stockInicial3:=sucursal3(i).stockInicial;
+		planillaFinal(i).stockActual3:=sucursal3(i).stockActual;
+		planillaFinal(i).stockInicial4:=sucursal4(i).stockInicial;
+		planillaFinal(i).stockActual4:=sucursal4(i).stockActual;
+		planillaFinal(i).stockInicial5:=sucursal5(i).stockInicial5;
+		planillaFinal(i).stockActual5:=sucursal5(i).stockActual5;
+
+	FinRepetirPara;
+
+FinHacer
+
+FinPrograma
