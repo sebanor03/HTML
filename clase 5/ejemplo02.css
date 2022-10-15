@@ -1,0 +1,14 @@
+/*
+font-family: 'Caveat', cursive;
+font-family: 'Montserrat', sans-serif;
+*/
+h2{
+    color: blue;
+    font-family: 'Caveat', cursive;
+
+}
+p{
+    
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
