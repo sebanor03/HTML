@@ -1,0 +1,30 @@
+.contenedor{
+    background-color: rgb(158, 160, 161);
+    width: 60%;
+    margin: 0% auto;
+    height: 600px;
+    position: relative;
+}
+.verde{
+    background-color: green;
+    width: 90%;
+    height: 150px;
+    margin: 0% auto 20px;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+ 
+}
+/*el posicionamiento absoluto se mide con respecto a un elemento que tenga posicionamiento relativo. por consiguiente el elemento que tenga posicionamiento relativo por nacimiento es la etiqueta <body>*/
+.celeste{
+    background-color: lightblue;
+    width: 90%;
+    height: 150px;
+    margin: 0% auto 20px;
+}
+.amarillo{
+    background-color: yellow;
+    width: 90%;
+    height: 150px;
+    margin: 0% auto 20px;
+}
