@@ -1,6 +1,8 @@
 const Header = (props)=>{
     return(
-        <p>hola soy el Header</p>
+        <header>
+            <h1>EJEMPLOS EN REACT</h1>
+            </header>
     )
 }
 export default Header;
