@@ -7,7 +7,8 @@ import Nav from './componentes/layout/Nav';
 
 import HomePage from './pages/HomePage';
 import Footer from './componentes/layout/Footer';
-import { EjemploProps01 } from './componentes/props/ejemplo1';
+import Ejemplo1 from './pages/Ejemplo1';
+import Ejemplo2 from './pages/Ejemplo2';
 
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
         <Nav />
         <Routes>
           <Route path='/' element={<HomePage/>}></Route>
-          <Route path='/' element={<EjemploProps01/>}></Route>
+          <Route path='/ejemplo1' element={<Ejemplo1/>}></Route>
+          <Route path='/ejemplo2' element={<Ejemplo2/>}></Route>
         </Routes>
       </BrowserRouter>
       <Footer/>
